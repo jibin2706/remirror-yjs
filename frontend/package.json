@@ -10,8 +10,11 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@remirror/pm": "^2.0.6",
+    "@remirror/react": "^2.0.29",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "remirror": "^2.0.32"
   },
   "devDependencies": {
     "@types/react": "^18.0.37",

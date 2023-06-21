@@ -1,0 +1,10 @@
+.container {
+	color: white;
+}
+
+.container :global(.remirror-editor) {
+	height: 100vh;
+	overflow: hidden;
+
+	padding: 1rem;
+}
