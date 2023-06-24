@@ -4,11 +4,7 @@ import './styles/index.css'
 import './App.css'
 
 function App() {
-	return (
-		<main>
-			<Editor />
-		</main>
-	)
+	return <Editor />
 }
 
 export default App
