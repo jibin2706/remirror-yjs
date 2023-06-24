@@ -6,15 +6,13 @@ import 'remirror/styles/all.css'
 import styles from './Editor.module.css'
 
 function Editor() {
-	const { manager, state } = useRemirror({
+	const { manager } = useRemirror({
 		extensions,
-		content: '<h1>hello world</h1>',
-		stringHandler: 'html',
 	})
 
 	return (
 		<section className={styles.container}>
-			<Remirror manager={manager} initialContent={state} />
+			<Remirror manager={manager} />
 		</section>
 	)
 }
