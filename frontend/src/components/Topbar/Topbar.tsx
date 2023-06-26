@@ -1,22 +1,22 @@
 import { useEffect, useState } from 'react'
 
-import { USER_COLORS, USER_NAMES, awareness } from '../Editor'
-import { getRandomItemFromArray } from '../../utils/functions/array'
+import { awareness } from '../Editor'
+
 import type {
 	AwarenessState,
 	AwarenessStateValue,
 	AwarenessStateValueWithId,
 } from '../../types/Editor.types'
+import { getUser } from '../../utils/functions/user'
 
 function Topbar() {
 	const [users, setUsers] = useState<AwarenessStateValueWithId[]>([])
 
 	useEffect(() => {
-		const userState = awareness.getLocalState()
-		if (userState?.name) return
+		const user = getUser()
 		const state: AwarenessStateValue['user'] = {
-			name: getRandomItemFromArray(USER_NAMES),
-			color: getRandomItemFromArray(USER_COLORS),
+			name: user.name,
+			color: user.color,
 		}
 		awareness.setLocalStateField('user', state)
 	}, [])
