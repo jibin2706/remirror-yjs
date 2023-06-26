@@ -4,6 +4,8 @@ import {
   OnGatewayConnection,
   OnGatewayDisconnect,
   WsException,
+  MessageBody,
+  SubscribeMessage,
 } from '@nestjs/websockets';
 import { Server } from 'ws';
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
@@ -33,5 +35,15 @@ export class EditorGateway implements OnGatewayConnection, OnGatewayDisconnect {
 
   handleDisconnect(connection: WebSocket) {
     console.log('disconnected');
+  }
+
+  @SubscribeMessage(1)
+  onOpenEvent(@MessageBody() data: any) {
+    console.log(data);
+  }
+
+  @SubscribeMessage('auth')
+  onAuthEvent(@MessageBody() data: any) {
+    console.log(data);
   }
 }

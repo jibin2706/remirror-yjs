@@ -10,18 +10,23 @@ export const DEFAULT_DOCUMENT_ID = '1234'
 const docId = new URLSearchParams(window.location.search).get('docId')
 
 const ydoc = new Y.Doc()
-const provider = new WebsocketProvider(SOCKET_URL, SOCKET_ROOM_NAME, ydoc, {
-	connect: true,
-	params: {
-		docId: docId ?? DEFAULT_DOCUMENT_ID,
+export const wsProvider = new WebsocketProvider(
+	SOCKET_URL,
+	SOCKET_ROOM_NAME,
+	ydoc,
+	{
+		connect: true,
+		params: {
+			docId: docId ?? DEFAULT_DOCUMENT_ID,
+		},
 	},
-})
-export const awareness = provider.awareness
+)
+export const awareness = wsProvider.awareness
 
 export const extensions = () => [
 	...wysiwygPreset(),
 	new YjsExtension({
-		getProvider: provider,
+		getProvider: wsProvider,
 		cursorBuilder: yjsCursorBuilder,
 	}),
 ]
